@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
+import SideNav from '../ui/dashboard/sidenav';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   description: 'MeReNGO Study Web App',
 };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -22,7 +23,10 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         ></link>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} flex h-screen`}>
+        <SideNav></SideNav>
+        <main className="flex-1 p-4">{children}</main>
+      </body>
     </html>
   );
 }
