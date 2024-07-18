@@ -15,9 +15,7 @@ export default function NavLinks() {
     },
     {
       name: 'Concept Entry',
-      href: `/dashboard/concept-entry-audio?username=${encodeURIComponent(
-        username
-      )}`,
+      href: `/dashboard/concept-entry?username=${encodeURIComponent(username)}`,
     },
     {
       name: 'History',

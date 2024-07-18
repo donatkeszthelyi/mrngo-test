@@ -11,7 +11,7 @@ import { timeStamp } from 'console';
 type Concept = {
   concept_id: string;
   concept_name: string;
-  answer_count: number; // Field to track the number of answers associated with each concept.
+  answer_count: number;
 };
 
 type Answers = {
@@ -333,7 +333,9 @@ const ConceptEntry = () => {
     setRecordingStatus('recording');
 
     // Create new MediaRecorder instance using the stream
-    const media = new MediaRecorder(stream);
+    const media = new MediaRecorder(stream, {
+      audioBitsPerSecond: 10000,
+    });
     mediaRecorder.current = media;
 
     let localAudioChunks: Blob[] = [];
@@ -368,7 +370,7 @@ const ConceptEntry = () => {
           setAudioFile(audioBlob);
         };
       }
-    }, 5000);
+    }, 30000);
   };
 
   return (

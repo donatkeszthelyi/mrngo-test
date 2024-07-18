@@ -2,33 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 20, 20, 20;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 20, 20, 20;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-audio::-webkit-media-controls-panel {
-  background-color: #22d3ee;
+  background-color: rgb(20, 20, 20);
+  color: white;
 }

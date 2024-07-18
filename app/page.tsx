@@ -1,33 +1,45 @@
 'use client';
 
-import './globals.css';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import './globals.css';
 
-const MainPage = () => {
-  const router = useRouter();
+const HomePage = () => {
+  const [username, setUsername] = useState('');
 
-  const enterPage = async () => {
-    router.push(`/username-entry`);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  };
+
+  const handleNavigate = () => {
+    if (username.trim() === '') {
+      alert('Please enter a username');
+    } else {
+      window.location.href = `/dashboard/concept-entry?username=${encodeURIComponent(
+        username
+      )}`;
+    }
   };
 
   return (
-    <>
-      <div className="hidden md:block w-80 h-60"></div>
-      <div className="relative text-center">
-        <h1 className="text-center text-5xl lg:text-7xl font-bold font-heading mb-6 max-w-2xl mx-auto">
-          Welcome to the <span className="text-cyan-400">MeReNGO</span> study!
-        </h1>
-        <div className="hidden md:block w-80 h-10"></div>
-        <button
-          className="text-2xl w-full sm:w-auto text-center h-20 flex-box items-center justify-center py-4 px-6 rounded-full bg-cyan-400 border border-cyan-400 shadow font-bold font-heading text-black hover:bg-cyan-200 focus:ring focus:ring-cyan-400 transition duration-200"
-          onClick={enterPage}
-        >
-          Enter Page
-        </button>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-3xl font-bold mb-4">Welcome to My App</h1>
+      <div className="mb-4">
+        <input
+          type="text"
+          value={username}
+          onChange={handleInputChange}
+          placeholder="Enter Username"
+          className="p-2 border border-gray-300 rounded text-black"
+        />
       </div>
-    </>
+      <button
+        onClick={handleNavigate}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+      >
+        Navigate to Dashboard
+      </button>
+    </div>
   );
 };
 
-export default MainPage;
+export default HomePage;
